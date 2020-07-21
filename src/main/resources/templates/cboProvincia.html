@@ -1,0 +1,4 @@
+<select name="Provincia">
+	<option value="0">Seleccionar Tu Provincia</option>
+	<option th:each="p:${listaProvincia}" th:value="${p.provincia_id}" th:text="${p.provincia_desc}" />
+</select>

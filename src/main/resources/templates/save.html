@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Personas</title>
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+<script type="text/javascript" src="../static/js/Localidades.js" th:src="@{/js/Localidades.js}"></script>
+
+ <script src="http://code.jquery.com/jquery-1.10.2.js">
+
+ </script>
+
+</head>
+
+
+<body>
+	<!-- MENSAJES -->
+	<div class="alert alert-success alert-dismissable"
+		th:if="${success != null}">
+		<label th:text="${success}"></label>
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<div class="alert alert-danger alert-dismissable"
+		th:if="${error != null}">
+		<label th:text="${error}"></label>
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<div class="alert alert-warning alert-dismissable"
+		th:if="${warning != null}">
+		<label th:text="${warning}"></label>
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+	<div class="alert alert-info alert-dismissable" th:if="${info != null}">
+		<label th:text="${info}"></label>
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	</div>
+
+	<div class="container">
+		<br>
+		<h2>Agregar Persona</h2>
+		<br>
+		<form action="#" th:action="@{/save}" class="form-group"
+			th:object="${persona}" method="post" id="data">
+
+			<input type="hidden" th:field="*{id}" id="id" name="id">
+
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input type="text"
+					class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="apellido">Apellido</label> <input type="text"
+					class="form-control" id="apellido" th:field="*{apellido}"
+					name="apellido"> <small class="form-text text-danger"
+					th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="direccion">Direccion</label> <input type="text"
+					class="form-control" id="direccion" th:field="*{direccion}"
+					name="direccion"> <small class="form-text text-danger"
+					th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="telefono">Telefono</label> <input type="text"
+					class="form-control" id="telefono" th:field="*{telefono}"
+					name="telefono"> <small class="form-text text-danger"
+					th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">
+				</small>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label> <input type="text"
+					class="form-control" id="email" th:field="*{email}" name="email">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+				</small>
+			</div>
+			
+			<div class="form-group">
+				<label for="departamento">Departamento</label> 
+				<select class="form-control" id="departamento" onchange="cboProvincia();" name="iddpto">
+					<option value="0">Seleccione</option>
+					<option th:each="dpto:${listaDepartamento}" th:value="${dpto.dpto_id}" th:text="${dpto.dpto_desc}"/>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="provincia">Provincia</label>
+				<select class="form-control" id="Provincia" onchange="cboDistrito();" name="idPro">
+					<option value="">Seleccionar Tu Provincia</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="distrito">Provincia</label>
+				<select class="form-control" id="Distrito">
+					<option value="">Seleccionar Tu Distrito</option>
+				</select>
+			</div>
+			
+			
+			
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,4 @@
+<select name="Distrito">
+	<option value="0">Seleccionar Tu Distrito</option>
+	<option th:each="d:${listaDistrito}" th:value="${d.distrito_id}" th:text="${d.distrito_desc}" />
+</select>
