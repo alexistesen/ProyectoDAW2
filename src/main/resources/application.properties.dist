@@ -10,7 +10,7 @@ spring.jpa.show-sql=true
 spring.jpa.hibernate.ddl-auto=update
 spring.datasource.url=jdbc:postgresql://localhost:5432/ejemplosp2
 spring.datasource.username=postgres
-spring.datasource.password=josetesen11
+spring.datasource.password=sql
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 
 #Ejecutar solo la primera vez para llenar Data de las localidades
