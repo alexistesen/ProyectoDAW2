@@ -85,14 +85,14 @@ public class PersonaController {
 	
 
 	@PostMapping({"/save/listaProvincia","/listaProvincia"})
-	public String provincia(Model model, @Valid Integer iddpto) {
+	public String provincia(Model model, @Valid Integer departamento) {
 		
 		List<LcldProvincia> listaTotal = provinciaService.findAll();
 		List<LcldProvincia> lista = new ArrayList<LcldProvincia>();
 		
-		if(iddpto!=0) {
+		if(departamento!=0) {
 		for(LcldProvincia temp: listaTotal) {
-			if(temp.getDepartamento().getDpto_id()==iddpto) {
+			if(temp.getDepartamento().getDpto_id()==departamento) {
 				lista.add(temp);
 			}
 		}
@@ -104,14 +104,14 @@ public class PersonaController {
 		
 	
 	@PostMapping({"/save/listaDistrito","/listaDistrito"})
-	public String distrito(Model model, @Valid Integer idPro) {
+	public String distrito(Model model, @Valid Integer provincia) {
 		
 		List<LcldDistrito> listaTotal = distritoService.findAll();
 		List<LcldDistrito> lista = new ArrayList<LcldDistrito>();
 		
-		if(idPro!=0) {
+		if(provincia!=0) {
 		for(LcldDistrito temp: listaTotal) {
-			if(temp.getProvincia().getProvincia_id()==idPro) {
+			if(temp.getProvincia().getProvincia_id()==provincia) {
 				lista.add(temp);
 			}
 		}
