@@ -38,8 +38,16 @@ public class Persona implements Serializable{
 	private String email;
 	
 	@ManyToOne
-	@JoinColumn(name="pais_id", nullable = false)
-	private Pais pais;
+	@JoinColumn(name="id_departamento", nullable = false)
+	private LcldDpto departamento;
+	
+	@ManyToOne
+	@JoinColumn(name="id_provincia", nullable = false)
+	private LcldProvincia provincia;
+	
+	@ManyToOne
+	@JoinColumn(name="id_distrito", nullable = false)
+	private LcldDistrito distrito;
 
 	public int getId() {
 		return id;
@@ -81,14 +89,6 @@ public class Persona implements Serializable{
 		this.telefono = telefono;
 	}
 
-	public Pais getPais() {
-		return pais;
-	}
-
-	public void setPais(Pais pais) {
-		this.pais = pais;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -96,6 +96,31 @@ public class Persona implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public LcldDpto getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(LcldDpto departamento) {
+		this.departamento = departamento;
+	}
+
+	public LcldProvincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(LcldProvincia provincia) {
+		this.provincia = provincia;
+	}
+
+	public LcldDistrito getDistrito() {
+		return distrito;
+	}
+
+	public void setDistrito(LcldDistrito distrito) {
+		this.distrito = distrito;
+	}
+
 	
 	
 }

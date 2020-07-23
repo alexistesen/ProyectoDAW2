@@ -1,5 +1,7 @@
 package com.cibertec.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "tb_distrito")
-public class LcldDistrito {
+public class LcldDistrito implements Serializable{
 
 	@Id
 	@Column(name = "id_distrito")

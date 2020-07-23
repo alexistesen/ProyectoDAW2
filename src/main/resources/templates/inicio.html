@@ -53,7 +53,9 @@
 						<th>Direccion</th>
 						<th>Telefono</th>
 						<th>Email</th>
-						<th>Pais</th>
+						<th>Departamento</th>
+						<th>Provincia</th>
+						<th>Distrito</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -65,7 +67,9 @@
 						<td th:text=${persona.direccion}></td>
 						<td th:text=${persona.telefono}></td>
 						<td th:text=${persona.email}></td>
-						<td th:text=${persona.pais.nombre}></td>
+						<td th:text=${persona.departamento.dpto_desc}></td>
+						<td th:text=${persona.provincia.provincia_desc}></td>
+						<td th:text=${persona.distrito.distrito_desc}></td>
 						<td><a class="btn btn-info" th:href="@{/save/{id}(id=${persona.id})}">Editar</a></td>
 						<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a></td>
 					</tr>

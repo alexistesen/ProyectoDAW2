@@ -3,6 +3,7 @@ package com.cibertec.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,10 +28,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .authorizeRequests()
 	        .antMatchers(resources).permitAll()  
 	        .antMatchers("/","/index").permitAll()
+	        .antMatchers(HttpMethod.GET,"/personas").permitAll()
+	        .antMatchers(HttpMethod.POST,"/personas").permitAll()
+	        .antMatchers(HttpMethod.PUT,"/personas").permitAll()
+	        .antMatchers(HttpMethod.DELETE,"/personas/{id}").permitAll()
 	        .antMatchers("/admin*").access("hasRole('ADMIN')")
 	        .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
+            .csrf().disable()
             .formLogin()
                 .loginPage("/login")
                 .permitAll()
@@ -51,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //El numero 4 representa que tan fuerte quieres la encriptacion.
 //Se puede en un rango entre 4 y 31. 
 //Si no pones un numero el programa utilizara uno aleatoriamente cada vez
-//que inicies la aplicacion, por lo cual tus contrasenas encriptadas no funcionaran bien
+//que inicies la aplicacion, por lo cual tus contras|enas encriptadas no funcionaran bien
         return bCryptPasswordEncoder;
     }
 	

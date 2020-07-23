@@ -83,7 +83,7 @@
 			
 			<div class="form-group">
 				<label for="departamento">Departamento</label> 
-				<select class="form-control" id="departamento" onchange="cboProvincia();" name="iddpto">
+				<select class="form-control" id="departamento" onchange="cboProvincia();" name="departamento">
 					<option value="0">Seleccione</option>
 					<option th:each="dpto:${listaDepartamento}" th:value="${dpto.dpto_id}" th:text="${dpto.dpto_desc}"/>
 				</select>
@@ -91,19 +91,17 @@
 			
 			<div class="form-group">
 				<label for="provincia">Provincia</label>
-				<select class="form-control" id="Provincia" onchange="cboDistrito();" name="idPro">
-					<option value="">Seleccionar Tu Provincia</option>
+				<select class="form-control" id="Provincia" onchange="cboDistrito();" name="provincia">
+					<option value="0">Seleccionar Tu Provincia</option>
 				</select>
 			</div>
 			
 			<div class="form-group">
-				<label for="distrito">Provincia</label>
-				<select class="form-control" id="Distrito">
-					<option value="">Seleccionar Tu Distrito</option>
+				<label for="distrito">Distrito</label>
+				<select class="form-control" id="Distrito" name="distrito">
+					<option value="0">Seleccionar Tu Distrito</option>
 				</select>
 			</div>
-			
-			
 			
 			<button type="submit" class="btn btn-success">Guardar</button>
 		</form>
