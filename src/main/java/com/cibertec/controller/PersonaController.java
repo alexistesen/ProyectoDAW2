@@ -61,7 +61,6 @@ public class PersonaController {
 			List<LcldProvincia> lista = new ArrayList<LcldProvincia>();
 
 			if (personaService.get(id).getProvincia().getProvincia_id() != 0) {
-				System.out.println("Existe provincia");
 				for (LcldProvincia temp : listaProvincias) {
 					if (temp.getDepartamento().getDpto_id() == personaService.get(id).getDepartamento().getDpto_id()) {
 						lista.add(temp);
@@ -75,7 +74,6 @@ public class PersonaController {
 			List<LcldDistrito> lista2 = new ArrayList<LcldDistrito>();
 
 			if (personaService.get(id).getDistrito().getDistrito_id() != 0) {
-				System.out.println("Existe distrito");
 				for (LcldDistrito temp : listaDistritos) {
 					if (temp.getProvincia().getProvincia_id() == personaService.get(id).getProvincia()
 							.getProvincia_id()) {
