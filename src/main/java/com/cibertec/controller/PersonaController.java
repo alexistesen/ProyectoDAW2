@@ -55,6 +55,43 @@ public class PersonaController {
 		model.addAttribute("listaDepartamento",dptoService.findAll());
 		if(id != null && id != 0) {
 			model.addAttribute("persona", personaService.get(id));
+			model.addAttribute("selectedOn", "true");
+			
+			/*1.*/
+			List<LcldProvincia> listaTotal = provinciaService.findAll();
+			List<LcldProvincia> lista = new ArrayList<LcldProvincia>();
+			
+			if(personaService.get(id).getProvincia().getProvincia_id()!=0) {
+			for(LcldProvincia temp: listaTotal) {
+				if(temp.getDepartamento().getDpto_id()==personaService.get(id).getProvincia().getProvincia_id()) {
+					lista.add(temp);
+				}
+			}
+			}
+			
+			model.addAttribute("listaProvincia",lista);
+			/**/
+			
+			/*2.*/
+			
+			List<LcldDistrito> listaTotal2 = distritoService.findAll();
+			List<LcldDistrito> lista2 = new ArrayList<LcldDistrito>();
+			
+			if(personaService.get(id).getDistrito().getDistrito_id()!=0) {
+			for(LcldDistrito temp: listaTotal2) {
+				if(temp.getProvincia().getProvincia_id()==personaService.get(id).getDistrito().getDistrito_id()) {
+					lista2.add(temp);
+				}
+			}
+			}
+		
+			model.addAttribute("listaDistrito",lista2);
+			
+			
+			/**/
+			
+			
+			
 		} else {
 			model.addAttribute("persona", new Persona());
 		}

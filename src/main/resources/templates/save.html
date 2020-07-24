@@ -83,24 +83,49 @@
 			
 			<div class="form-group">
 				<label for="departamento">Departamento</label> 
-				<select class="form-control" id="departamento" onchange="cboProvincia();" name="departamento">
+				
+				<select th:if="${selectedOn==null}" class="form-control" id="departamento" onchange="cboProvincia();" name="departamento">
 					<option value="0">Seleccione</option>
 					<option th:each="dpto:${listaDepartamento}" th:value="${dpto.dpto_id}" th:text="${dpto.dpto_desc}"/>
+				</select>
+				
+				<select th:if="${selectedOn}" class="form-control" id="departamento" onchange="cboProvincia();" name="departamento">
+					<option value="0">Seleccione</option>
+					<option th:each="dpto:${listaDepartamento}" th:value="${dpto.dpto_id}" th:text="${dpto.dpto_desc}"
+					th:selected="${persona.departamento.dpto_id} == ${dpto.dpto_id}"/>
 				</select>
 			</div>
 			
 			<div class="form-group">
 				<label for="provincia">Provincia</label>
-				<select class="form-control" id="Provincia" onchange="cboDistrito();" name="provincia">
+				
+				<select th:if="${selectedOn==null}" class="form-control" id="Provincia" onchange="cboDistrito();" name="provincia">
 					<option value="0">Seleccionar Tu Provincia</option>
 				</select>
+				
+				<select th:if="${selectedOn}" class="form-control" id="Provincia" onchange="cboDistrito();" name="provincia">
+					<option value="0">Seleccione</option>
+					<option th:each="pro:${listaProvincia}" th:value="${pro.provincia_id}" th:text="${pro.provincia_desc}"
+					th:selected="${persona.provincia.provincia_id} == ${pro.provincia_id}"/>
+				</select>
+				
 			</div>
 			
 			<div class="form-group">
 				<label for="distrito">Distrito</label>
-				<select class="form-control" id="Distrito" name="distrito">
+				
+				<select th:if="${selectedOn==null}" class="form-control" id="Distrito" name="distrito">
 					<option value="0">Seleccionar Tu Distrito</option>
 				</select>
+				
+				<select th:if="${selectedOn}" class="form-control" id="Distrito" name="distrito">
+					<option value="0">Seleccione</option>
+					<option th:each="dtro:${listaDistrito}" th:value="${dtro.distrito_id}" th:text="${dtro.distrito_desc}"
+					th:selected="${persona.distrito.distrito_id} == ${dtro.distrito_id}"/>
+				</select>
+				
+				
+				
 			</div>
 			
 			<button type="submit" class="btn btn-success">Guardar</button>
