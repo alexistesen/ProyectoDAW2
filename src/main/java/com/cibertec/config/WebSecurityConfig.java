@@ -32,8 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	        .antMatchers(HttpMethod.POST,"/personas").permitAll()
 	        .antMatchers(HttpMethod.PUT,"/personas").permitAll()
 	        .antMatchers(HttpMethod.DELETE,"/personas/{id}").permitAll()
-	        .antMatchers("/admin*").access("hasRole('ADMIN')")
-	        .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
+	        .antMatchers("/save/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
             .csrf().disable()
@@ -49,6 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .permitAll()
                 .logoutSuccessUrl("/login?logout");
     }
+    
+    
     BCryptPasswordEncoder bCryptPasswordEncoder;
     //Crea el encriptador de contraseñas	
     @Bean

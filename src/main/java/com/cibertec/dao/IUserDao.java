@@ -4,9 +4,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cibertec.model.Usuario;
+import com.cibertec.model.User;
 
-public interface IUserDao extends JpaRepository<Usuario, Integer> {
+public interface IUserDao extends JpaRepository<User, Integer> {
 
-	public Optional<Usuario> findByUsername(String username);
+	public Optional<User> findByUsername(String username);
 }

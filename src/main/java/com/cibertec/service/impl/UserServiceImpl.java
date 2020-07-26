@@ -8,23 +8,23 @@ import org.springframework.stereotype.Service;
 
 import com.cibertec.commons.GenericServiceImpl;
 import com.cibertec.dao.IUserDao;
-import com.cibertec.model.Usuario;
+import com.cibertec.model.User;
 import com.cibertec.service.IUserService;
 
 @Service
-public class UserServiceImpl extends GenericServiceImpl<Usuario, Integer> implements IUserService{
+public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements IUserService{
 
 	@Autowired
 	private IUserDao userDao;
 	
 	@Override
-	public JpaRepository<Usuario, Integer> getDao() {
+	public JpaRepository<User, Integer> getDao() {
 		// TODO Auto-generated method stub
 		return userDao;
 	}
 
 	@Override
-	public Optional<Usuario> findByUsername(String username) {
+	public Optional<User> findByUsername(String username) {
 		// TODO Auto-generated method stub
 		return userDao.findByUsername(username);
 	}

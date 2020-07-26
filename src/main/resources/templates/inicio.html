@@ -39,7 +39,7 @@
 	<div class="container">
 		<br>
 		<div>
-			<a href="/save/0" class="btn btn-primary">Agregar</a>
+			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" href="/save/0" class="btn btn-primary">Agregar</a>
 		</div>
 		<br>
 		<h2 th:if="${list.isEmpty()}">No hay personas</h2>
@@ -70,8 +70,8 @@
 						<td th:text=${persona.departamento.dpto_desc}></td>
 						<td th:text=${persona.provincia.provincia_desc}></td>
 						<td th:text=${persona.distrito.distrito_desc}></td>
-						<td><a class="btn btn-info" th:href="@{/save/{id}(id=${persona.id})}">Editar</a></td>
-						<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a></td>
+						<td><a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-info" th:href="@{/save/{id}(id=${persona.id})}">Editar</a></td>
+						<td><a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger" th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>

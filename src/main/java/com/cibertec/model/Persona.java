@@ -38,15 +38,15 @@ public class Persona implements Serializable{
 	private String email;
 	
 	@ManyToOne
-	@JoinColumn(name="departamento_id", nullable = false)
+	@JoinColumn(name="id_departamento", nullable = false)
 	private LcldDpto departamento;
 	
 	@ManyToOne
-	@JoinColumn(name="provincia_id", nullable = false)
+	@JoinColumn(name="id_provincia", nullable = false)
 	private LcldProvincia provincia;
 	
 	@ManyToOne
-	@JoinColumn(name="distrito_id", nullable = false)
+	@JoinColumn(name="id_distrito", nullable = false)
 	private LcldDistrito distrito;
 
 	public int getId() {

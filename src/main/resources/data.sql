@@ -1,3 +1,13 @@
+INSERT INTO user (id,enabled,password,username) VALUES(1,true,'$2a$04$Rdk73vMslUwl6SJhcSd8aOLns7V8DLMQGa0SrgTwOzbuOsBRTtTZK','admin'); -- password: 1234
+
+INSERT INTO user (id,enabled,password,username) VALUES(2,true,'$2a$04$eFyQ5XDrVBrLelaVVEpH0uBVESfVZEiArJfdZFfMWL0AQry7Eifbe','user'); -- password: 1234
+
+INSERT INTO authority (id,authority) VALUES (1,'ROLE_ADMIN');
+INSERT INTO authority (id,authority) VALUES (2,'ROLE_USER');
+INSERT INTO authorities_users (user_id, authority_id) VALUES (1,1);
+INSERT INTO authorities_users (user_id, authority_id) VALUES (2,2);
+
+
  insert into tb_departamento (id_departamento, desc_departamento) values 
 (1, 'AMAZONAS'),
 (2, 'ANCASH'),
