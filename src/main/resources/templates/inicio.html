@@ -49,29 +49,31 @@
 				<thead>
 					<tr>
 						<th>Nombre</th>
-						<th>Apellido</th>
+						<th>Apellido Paterno</th>
+						<th>Apellido Materno</th>
 						<th>Direccion</th>
 						<th>Telefono</th>
 						<th>Email</th>
+						<th>Tipo de Empleado</th>
 						<th>Departamento</th>
-						<th>Provincia</th>
-						<th>Distrito</th>
+						<th>EstadoCivil</th>
 						<th></th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="persona : ${list}">
-						<td th:text=${persona.nombre}></td>
-						<td th:text=${persona.apellido}></td>
-						<td th:text=${persona.direccion}></td>
-						<td th:text=${persona.telefono}></td>
-						<td th:text=${persona.email}></td>
-						<td th:text=${persona.departamento.dpto_desc}></td>
-						<td th:text=${persona.provincia.provincia_desc}></td>
-						<td th:text=${persona.distrito.distrito_desc}></td>
-						<td><a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-info" th:href="@{/save/{id}(id=${persona.id})}">Editar</a></td>
-						<td><a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger" th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a></td>
+					<tr th:each="empleado : ${list}">
+						<td th:text=${empleado.nombre}></td>
+						<td th:text=${empleado.apellidoP}></td>
+						<td th:text=${empleado.apellidoM}></td>
+						<td th:text=${empleado.direccion}></td>
+						<td th:text=${empleado.telefono}></td>
+						<td th:text=${empleado.email}></td>
+						<td th:text=${empleado.tipoEmpleado.tipoEmpleado_desc}></td>
+						<td th:text=${empleado.departamento.desc_departamento}></td>
+						<td th:text=${empleado.estadoCivil.estadoCivil_desc}></td>
+						<td><a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-info" th:href="@{/save/{id}(id=${empleado.id})}">Editar</a></td>
+						<td><a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger" th:href="@{/delete/{id}(id=${empleado.id})}">Eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>

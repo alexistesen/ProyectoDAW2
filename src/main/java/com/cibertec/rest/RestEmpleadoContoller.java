@@ -12,28 +12,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cibertec.model.Persona;
-import com.cibertec.service.IPersonaService;
+import com.cibertec.model.Empleado;
+import com.cibertec.service.IEmpleadoService;
 
 @RestController
-@RequestMapping("/personas")
-public class RestPersonaContoller {
+@RequestMapping("/empleados")
+public class RestEmpleadoContoller {
 
 	@Autowired
-	private IPersonaService personaService;
+	private IEmpleadoService personaService;
 	
 	@GetMapping
-	public List<Persona> listar(){
+	public List<Empleado> listar(){
 		return personaService.getAll();
 	}
 	
 	@PostMapping
-	public void insertar(@RequestBody Persona per){
+	public void insertar(@RequestBody Empleado per){
 		personaService.save(per);
 	}
 	
 	@PutMapping
-	public void modificar(@RequestBody Persona per){
+	public void modificar(@RequestBody Empleado per){
 		personaService.save(per);
 	}
 	

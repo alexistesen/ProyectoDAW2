@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 @Entity
-public class Persona implements Serializable{
+public class Empleado implements Serializable{
 
 	@Id
 	@GeneratedValue
@@ -19,9 +19,13 @@ public class Persona implements Serializable{
 	@NotEmpty
 	private String nombre;
 	
-	@Column(name = "persona_apellido")
+	@Column(name = "persona_apellidoP")
 	@NotEmpty
-	private String apellido;
+	private String apellidoP;
+	
+	@Column(name = "persona_apellidoM")
+	@NotEmpty
+	private String apellidoM;
 	
 	@Column(name = "persona_direccion")
 	@NotEmpty
@@ -38,16 +42,16 @@ public class Persona implements Serializable{
 	private String email;
 	
 	@ManyToOne
-	@JoinColumn(name="id_departamento", nullable = false)
-	private LcldDpto departamento;
+	@JoinColumn(name="departamento_id", nullable = false)
+	private Departamento departamento;
 	
 	@ManyToOne
-	@JoinColumn(name="id_provincia", nullable = false)
-	private LcldProvincia provincia;
+	@JoinColumn(name="estadoCivil_id", nullable = false)
+	private EstadoCivil estadoCivil;
 	
 	@ManyToOne
-	@JoinColumn(name="id_distrito", nullable = false)
-	private LcldDistrito distrito;
+	@JoinColumn(name="tipoEmpleado_id", nullable = false)
+	private TipoEmpleado tipoEmpleado;
 
 	public int getId() {
 		return id;
@@ -65,12 +69,20 @@ public class Persona implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getApellidoP() {
+		return apellidoP;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellidoP(String apellidoP) {
+		this.apellidoP = apellidoP;
+	}
+
+	public String getApellidoM() {
+		return apellidoM;
+	}
+
+	public void setApellidoM(String apellidoM) {
+		this.apellidoM = apellidoM;
 	}
 
 	public String getDireccion() {
@@ -97,30 +109,28 @@ public class Persona implements Serializable{
 		this.email = email;
 	}
 
-	public LcldDpto getDepartamento() {
+	public Departamento getDepartamento() {
 		return departamento;
 	}
 
-	public void setDepartamento(LcldDpto departamento) {
+	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
 
-	public LcldProvincia getProvincia() {
-		return provincia;
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
 	}
 
-	public void setProvincia(LcldProvincia provincia) {
-		this.provincia = provincia;
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
+		this.estadoCivil = estadoCivil;
 	}
 
-	public LcldDistrito getDistrito() {
-		return distrito;
+	public TipoEmpleado getTipoEmpleado() {
+		return tipoEmpleado;
 	}
 
-	public void setDistrito(LcldDistrito distrito) {
-		this.distrito = distrito;
+	public void setTipoEmpleado(TipoEmpleado tipoEmpleado) {
+		this.tipoEmpleado = tipoEmpleado;
 	}
 
-	
-	
 }
